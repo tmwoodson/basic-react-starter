@@ -1,7 +1,6 @@
-import '@testing-library/jest-dom/extend-expect' // ideally this should be in a test setup file
 
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react'
 
 import { Meow } from '../src/meow'
 
@@ -12,6 +11,8 @@ describe('<Meow/>', () => {
     beforeEach(() => {
         container = render(<Meow/>).container
     })
+
+    afterEach(cleanup)
 
     it('meows', () => {
         expect(container).toHaveTextContent('Meow')
